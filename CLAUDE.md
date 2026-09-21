@@ -36,6 +36,7 @@ Audience: the general public first, practitioners second. Write for a smart adul
 3. Content is educational, not individualized advice. The standard disclaimer lives on each section landing page only (introduction, process, domains, tools). Do not repeat it on individual pages.
 4. Do not invent statistics, thresholds, limits, or rates. If a number is year-specific, state the year and cite the source. If unsure, write "[VERIFY]" inline and list it in the report. On knowledge-area pages the figures rule in the area template takes precedence: the number goes on /tools/this-years-figures, not on the page.
 5. No personal data, no real client examples. Worked examples use obviously fictional people.
+6. Stock nextra-theme-docs look. Custom CSS limited to the one accent-color variable in app/globals.css. No custom components unless the owner asks. Exception: custom CSS is allowed only to fix a measured WCAG 2.2 AA failure in theme output. Each such override must cite the SC number and measured ratio in a comment, and be kept as small as possible.
 
 ## Attribution and license
 - The guide is published under a project name, not a personal name. The site names no personal name, employer, credentials, or licenses anywhere, on pages or in metadata. Its author is described only by [AUTHOR LINE].
@@ -57,7 +58,7 @@ Step and area names are provided by the owner in prompts; do not rename or reord
 - Nextra 4, nextra-theme-docs, Next.js App Router, MDX in content/
 - pnpm only. Never use npm or yarn.
 - Keep the build warning-free.
-- Custom CSS limited to one accent color variable. No custom components unless the owner asks.
+- Custom CSS and custom components follow hard rule 6, including its WCAG 2.2 AA exception.
 
 ## Writing style
 - Plain English, short paragraphs, active voice. Define a term the first time it appears and link it to the glossary.
