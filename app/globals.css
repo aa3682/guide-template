@@ -1,3 +1,30 @@
 :root {
   --nextra-primary-hue: 212deg;
 }
+
+/*
+ * WCAG 2.2 SC 1.4.11 Non-text Contrast (AA) — focus indicator, light theme.
+ * Stock nextra-theme-docs rings focus with --x-color-primary-200 (offset
+ * --x-color-primary-300). Measured against the page background rgb(250,250,250):
+ * outer ring rgb(184,217,255) = 1.40:1 and offset ring rgb(138,192,255) = 1.82:1,
+ * both below the required 3:1. Re-pointing both at --x-color-primary-600
+ * rgb(0,107,230) measures 4.74:1. Dark theme already passes (4.60:1) and is left
+ * on the stock tokens.
+ */
+html:not(.dark) .x\:nextra-focus:focus-visible,
+html:not(.dark) .x\:focus-visible\:nextra-focus:focus-visible {
+  --tw-ring-color: var(--x-color-primary-600);
+  --tw-ring-offset-color: var(--x-color-primary-600);
+}
+
+/*
+ * WCAG 2.2 SC 1.4.11 Non-text Contrast (AA) — search input, both themes.
+ * The theme sets outline-style:none on :focus-visible and relies on the ring
+ * alone; on focus the input also turns transparent, so the indicator sits
+ * directly on the page background. An explicit outline in --x-color-primary-600
+ * measures 4.74:1 light and 6.95:1 dark, against 1.40:1 light before.
+ */
+input.x\:nextra-focus:focus-visible {
+  outline: 2px solid var(--x-color-primary-600);
+  outline-offset: 1px;
+}
