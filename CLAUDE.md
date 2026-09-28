@@ -15,7 +15,7 @@ Files to edit:
 - `README.md` — the title, the opening description, and the repository URL.
 - `package.json` — `name`.
 - `app/layout.jsx` — the site title, description, and `REPO_URL`.
-- `app/globals.css` — the accent hue, if a different one is wanted.
+- `app/layout.jsx` and `app/globals.css` — the accent (`<Head color>` in layout.jsx, plus the accent hex values in globals.css), if a different one is wanted. Re-measure the WCAG fixes in globals.css after any colour change.
 - `content/_meta.js`, `content/process/_meta.js`, `content/domains/_meta.js`, `content/tools/_meta.js` — sidebar labels and order.
 - `content/introduction/index.mdx`, `content/process/index.mdx`, `content/domains/index.mdx`, `content/tools/index.mdx` — the landing pages; list every step, area, and tool.
 - `content/about/index.mdx` — `[AUTHOR LINE]`, `[DISCLAIMER]`, the corrections URL, and the license links.
@@ -26,7 +26,7 @@ Files to edit:
 - `LICENSE` — the copyright line.
 
 ## What this is
-An open, public reference site on [TOPIC], built as a Nextra 4 docs site. Visual reference only: https://www.promptingguide.ai/ — match its look using the stock nextra-theme-docs; never copy its content or components.
+An open, public reference site on [TOPIC], built as a Nextra 4 docs site. Visual reference: https://diy-wealth-framework.vercel.app — the slate theme is ported from it; never copy its content.
 
 Audience: the general public first, practitioners second. Write for a smart adult with no background in [TOPIC]; add practitioner depth in clearly marked subsections rather than separate pages.
 
@@ -36,7 +36,7 @@ Audience: the general public first, practitioners second. Write for a smart adul
 3. Content is educational, not individualized advice. The standard disclaimer lives on each section landing page only (introduction, process, domains, tools). Do not repeat it on individual pages.
 4. Do not invent statistics, thresholds, limits, or rates. If a number is year-specific, state the year and cite the source. If unsure, write "[VERIFY]" inline and list it in the report. On knowledge-area pages the figures rule in the area template takes precedence: the number goes on /tools/this-years-figures, not on the page.
 5. No personal data, no real client examples. Worked examples use obviously fictional people.
-6. Stock nextra-theme-docs look. Custom CSS limited to the one accent-color variable in app/globals.css. No custom components unless the owner asks. Exception: custom CSS is allowed only to fix a measured WCAG 2.2 AA failure in theme output. Each such override must cite the SC number and measured ratio in a comment, and be kept as small as possible.
+6. Slate theme, dark only. The site uses the slate theme defined in app/globals.css, with its accent, page colour and forced dark mode set through documented Nextra props in app/layout.jsx. There is no light theme and no theme switch. Custom CSS is limited to that theme plus WCAG 2.2 AA fixes; each fix cites its SC number and measured ratio in a comment and is kept as small as possible. No custom components unless the owner asks.
 
 ## Attribution and license
 - The guide is published under a project name, not a personal name. The site names no personal name, employer, credentials, or licenses anywhere, on pages or in metadata. Its author is described only by [AUTHOR LINE].

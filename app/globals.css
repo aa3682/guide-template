@@ -1,30 +1,123 @@
+/*
+ * Slate theme, dark only (ported from the DIY Wealth Framework site).
+ * The accent (emerald #10b981) and the page colour (#0f172a) are set through
+ * the documented <Head color backgroundColor> props in app/layout.jsx, and
+ * <Layout darkMode={false} nextThemes forcedTheme="dark"> keeps every visitor
+ * on the dark theme with no theme switch. This file holds the rest of the
+ * theme: the font, the page glow, slate in place of Nextra's neutral greys,
+ * and the WCAG 2.2 AA fixes at the end.
+ */
+
 :root {
-  --nextra-primary-hue: 212deg;
+  /* Outfit, loaded by next/font/local in app/layout.jsx as --font-outfit.
+     Code keeps Nextra's monospace stack, which reads --x-font-mono. */
+  --x-font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
 }
 
 /*
- * WCAG 2.2 SC 1.4.11 Non-text Contrast (AA) — focus indicator, light theme.
- * Stock nextra-theme-docs rings focus with --x-color-primary-200 (offset
- * --x-color-primary-300). Measured against the page background rgb(250,250,250):
- * outer ring rgb(184,217,255) = 1.40:1 and offset ring rgb(138,192,255) = 1.82:1,
- * both below the required 3:1. Re-pointing both at --x-color-primary-600
- * rgb(0,107,230) measures 4.74:1. Dark theme already passes (4.60:1) and is left
- * on the stock tokens.
+ * Slate instead of neutral grey. Nextra 4 draws dividers, borders, hover
+ * fills, muted text, code blocks and the footer from Tailwind's neutral-*,
+ * gray-*, black and white tokens. Re-pointing the tokens recolours every
+ * utility that reads them. Dividers land on #1e293b, card and code borders
+ * on #334155, control borders on #475569.
  */
-html:not(.dark) .x\:nextra-focus:focus-visible,
-html:not(.dark) .x\:focus-visible\:nextra-focus:focus-visible {
+.dark {
+  --x-color-white: #f8fafc;
+  --x-color-black: #1e293b; /* in dark mode this only paints the code block */
+  --x-color-neutral-50: #f8fafc;
+  --x-color-neutral-200: #e2e8f0;
+  --x-color-neutral-300: #cbd5e1;
+  --x-color-neutral-400: #94a3b8;
+  --x-color-neutral-500: #64748b;
+  --x-color-neutral-600: #475569;
+  --x-color-neutral-700: #334155;
+  --x-color-neutral-800: #1e293b;
+  --x-color-neutral-900: #1e293b; /* raised surface, one step above the page */
+  --x-color-gray-50: #f8fafc;
+  --x-color-gray-100: #f1f5f9;
+  --x-color-gray-200: #e2e8f0;
+  --x-color-gray-300: #cbd5e1;
+  --x-color-gray-400: #94a3b8;
+  --x-color-gray-600: #475569;
+  --x-color-gray-700: #334155;
+  --x-color-gray-800: #1e293b;
+  --x-color-gray-900: #0f172a;
+}
+
+/* Page: slate with a blue glow top right and an emerald glow bottom left.
+   Nextra leaves body text to the browser default (#fff under color-scheme:
+   dark); the theme's primary text is #f8fafc. */
+.dark body {
+  color: #f8fafc;
+  background-color: rgb(var(--nextra-bg));
+  background-image:
+    radial-gradient(1100px 600px at 100% 0%, rgba(59, 130, 246, 0.14), transparent 60%),
+    radial-gradient(900px 600px at 0% 100%, rgba(16, 185, 129, 0.12), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* The desktop sidebar footer is filled with the flat page colour, which shows
+   as a box over the glow. Its menu scrolls in its own container above it, so
+   nothing passes underneath. On mobile the drawer keeps the fill. */
+@media (min-width: 768px) {
+  .dark .nextra-sidebar-footer {
+    background-color: transparent;
+  }
+}
+
+/* Raised surfaces: callouts keep their type colour in the border, icon and
+   text; the search box sits on the same fill until it is focused. */
+.dark .nextra-callout,
+.dark .nextra-search input:not(:focus) {
+  background-color: #1e293b;
+}
+
+.dark .nextra-card {
+  border-color: #334155;
+}
+.dark .nextra-card:hover {
+  background-color: #1e293b;
+  border-color: #10b981;
+}
+
+/* Footer and the strip that holds it. */
+.dark div:has(> footer),
+.dark footer {
+  background-color: #0b1120;
+}
+
+/*
+ * WCAG 2.2 SC 1.4.11 Non-text Contrast (AA) — focus indicator.
+ * In dark mode Nextra rings focus with --x-color-primary-800 (offset
+ * --x-color-primary-700). With the emerald accent the outer ring (#0b7c56)
+ * measures 3.43:1 on the #0f172a page and 2.88:1 under the blue glow
+ * (#152647). Re-pointing ring and offset at --x-color-primary-600 (#10b981)
+ * measures 7.04:1 on the page and 5.91:1 under either glow. This also covers the
+ * search input, whose focus ring sits directly on the page background.
+ */
+.dark .x\:nextra-focus:focus-visible,
+.dark .x\:focus-visible\:nextra-focus:focus-visible {
   --tw-ring-color: var(--x-color-primary-600);
   --tw-ring-offset-color: var(--x-color-primary-600);
 }
 
 /*
- * WCAG 2.2 SC 1.4.11 Non-text Contrast (AA) — search input, both themes.
- * The theme sets outline-style:none on :focus-visible and relies on the ring
- * alone; on focus the input also turns transparent, so the indicator sits
- * directly on the page background. An explicit outline in --x-color-primary-600
- * measures 4.74:1 light and 6.95:1 dark, against 1.40:1 light before.
+ * WCAG 2.2 SC 1.4.3 Contrast (Minimum) (AA) — search-result highlights.
+ * Nextra paints matches white on --x-color-primary-600 at 80% opacity
+ * (#10996f over the results panel): 3.62:1. Dark text #022c22 on the opaque
+ * accent #10b981 measures 5.97:1.
  */
-input.x\:nextra-focus:focus-visible {
-  outline: 2px solid var(--x-color-primary-600);
-  outline-offset: 1px;
+.dark .nextra-search-results mark {
+  background-color: var(--x-color-primary-600);
+  color: #022c22;
+}
+
+/*
+ * WCAG 2.2 SC 1.4.3 Contrast (Minimum) (AA) — code comments.
+ * The github-dark syntax theme draws comments in #6A737D: 4.36:1 on the old
+ * black code block and 3.04:1 on the slate #1e293b one. #94a3b8 measures
+ * 5.71:1 on #1e293b.
+ */
+.dark .nextra-code span[style*='--shiki-dark:#6A737D'] {
+  color: #94a3b8;
 }
