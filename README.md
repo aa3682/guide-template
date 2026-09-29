@@ -8,7 +8,8 @@ A topic-neutral copy of a working guide site with the subject matter removed. It
 
 ## Stack
 
-- [Nextra](https://nextra.site) 4 with `nextra-theme-docs`
+- [Nextra](https://nextra.site) 4 with `nextra-theme-docs`, restyled with a slate theme (dark only) in `app/globals.css`
+- [Outfit](https://github.com/Outfitio/Outfit-Fonts), self-hosted from `fonts/` with `next/font/local`
 - Next.js App Router
 - MDX content in `content/`
 - [Pagefind](https://pagefind.app) search index generated at build time
@@ -32,7 +33,7 @@ Files to edit:
 - `README.md` — the title, the opening description, and the repository URL.
 - `package.json` — `name`.
 - `app/layout.jsx` — the site title, description, and `REPO_URL`.
-- `app/globals.css` — the accent hue, if a different one is wanted.
+- `app/layout.jsx` and `app/globals.css` — the accent (`<Head color>` in layout.jsx, plus the accent hex values in globals.css), if a different one is wanted. Re-measure the WCAG fixes in globals.css after any colour change.
 - `content/_meta.js`, `content/process/_meta.js`, `content/domains/_meta.js`, `content/tools/_meta.js` — sidebar labels and order.
 - `content/introduction/index.mdx`, `content/process/index.mdx`, `content/domains/index.mdx`, `content/tools/index.mdx` — the landing pages; list every step, area, and tool.
 - `content/about/index.mdx` — `[AUTHOR LINE]`, `[DISCLAIMER]`, the corrections URL, and the license links.
@@ -66,4 +67,4 @@ pnpm start
 
 ## License
 
-The prose in `content/` is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The code is licensed under MIT (see `LICENSE`).
+The prose in `content/` is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The code is licensed under MIT (see `LICENSE`). The Outfit font in `fonts/` is licensed under the SIL Open Font License 1.1 (see `fonts/OFL.txt`).
