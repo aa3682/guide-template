@@ -14,6 +14,7 @@ A topic-neutral copy of a working guide site with the subject matter removed. It
 - Next.js App Router
 - MDX content in `content/`
 - [Pagefind](https://pagefind.app) search index generated at build time
+- [Playwright](https://playwright.dev) (dev only), for `pnpm theme-audit`
 - pnpm as the only package manager
 
 ## Starting a new guide
@@ -34,7 +35,7 @@ Files to edit:
 - `README.md` — the title, the opening description, and the repository URL.
 - `package.json` — `name`.
 - `app/layout.jsx` — the site title, description, and `REPO_URL`.
-- `app/layout.jsx`, `app/globals.css` and `code-theme.mjs` — the accent (`<Head color>` in layout.jsx, plus the accent hex values in globals.css and the code theme), if a different one is wanted. Re-measure the WCAG fixes in globals.css and the code-theme colours after any colour change.
+- `app/layout.jsx`, `app/globals.css` and `code-theme.mjs` — the accent (`<Head color>` in layout.jsx, plus the accent hex values in globals.css and the code theme), if a different one is wanted. Run `pnpm theme-audit` after any colour change.
 - `content/_meta.js`, `content/process/_meta.js`, `content/domains/_meta.js`, `content/tools/_meta.js` — sidebar labels and order.
 - `content/introduction/index.mdx`, `content/process/index.mdx`, `content/domains/index.mdx`, `content/tools/index.mdx` — the landing pages; list every step, area, and tool.
 - `content/about/index.mdx` — `[AUTHOR LINE]`, `[DISCLAIMER]`, the corrections URL, and the license links.
@@ -63,6 +64,8 @@ pnpm start
 ```
 
 `pnpm build` also generates the search index (Pagefind) into `public/_pagefind`.
+
+`pnpm theme-audit [url]` re-checks the theme in a running build (`pnpm start`, default http://localhost:3000): dark mode forced, no theme switch, no neutral greys, text contrast and focus rings, on every sidebar page at 1280px and 390px. Run it after a Nextra upgrade or any colour change. The first run on a new machine needs `pnpm exec playwright install chromium`.
 
 `pnpm wordcount <path>` counts the body prose of a content page, following the word-count rules in `CLAUDE.md`.
 
