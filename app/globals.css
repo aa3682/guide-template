@@ -123,13 +123,3 @@
   background-color: var(--x-color-primary-600);
   color: #022c22;
 }
-
-/*
- * WCAG 2.2 SC 1.4.3 Contrast (Minimum) (AA) — code comments.
- * The github-dark syntax theme draws comments in #6A737D: 4.36:1 on the old
- * black code block and 3.04:1 on the slate #1e293b one. #94a3b8 measures
- * 5.71:1 on #1e293b.
- */
-.dark .nextra-code span[style*='--shiki-dark:#6A737D'] {
-  color: #94a3b8;
-}

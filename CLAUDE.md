@@ -15,7 +15,7 @@ Files to edit:
 - `README.md` — the title, the opening description, and the repository URL.
 - `package.json` — `name`.
 - `app/layout.jsx` — the site title, description, and `REPO_URL`.
-- `app/layout.jsx` and `app/globals.css` — the accent (`<Head color>` in layout.jsx, plus the accent hex values in globals.css), if a different one is wanted. Re-measure the WCAG fixes in globals.css after any colour change.
+- `app/layout.jsx`, `app/globals.css` and `code-theme.mjs` — the accent (`<Head color>` in layout.jsx, plus the accent hex values in globals.css and the code theme), if a different one is wanted. Re-measure the WCAG fixes in globals.css and the code-theme colours after any colour change.
 - `content/_meta.js`, `content/process/_meta.js`, `content/domains/_meta.js`, `content/tools/_meta.js` — sidebar labels and order.
 - `content/introduction/index.mdx`, `content/process/index.mdx`, `content/domains/index.mdx`, `content/tools/index.mdx` — the landing pages; list every step, area, and tool.
 - `content/about/index.mdx` — `[AUTHOR LINE]`, `[DISCLAIMER]`, the corrections URL, and the license links.
