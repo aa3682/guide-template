@@ -2,6 +2,7 @@ import localFont from 'next/font/local'
 import { Footer, Layout, Navbar } from 'nextra-theme-docs'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
+import NoLastUpdated from './no-last-updated'
 import 'nextra-theme-docs/style.css'
 import './globals.css'
 
@@ -42,6 +43,7 @@ export default async function RootLayout({ children }) {
           docsRepositoryBase={`${REPO_URL}/blob/main`}
           pageMap={pageMap}
           darkMode={false}
+          lastUpdated={<NoLastUpdated />}
           nextThemes={{ defaultTheme: 'dark', forcedTheme: 'dark' }}
         >
           {children}

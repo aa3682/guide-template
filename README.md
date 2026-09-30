@@ -65,6 +65,8 @@ pnpm start
 
 `pnpm build` also generates the search index (Pagefind) into `public/_pagefind`.
 
+On Vercel, set `VERCEL_DEEP_CLONE=true` (Production and Preview) in each project's environment variables. Without it Vercel clones the repository shallowly and Nextra warns "repository is shallow cloned" during the build.
+
 `pnpm theme-audit [url]` re-checks the theme in a running build (`pnpm start`, default http://localhost:3000): dark mode forced, no theme switch, no neutral greys, text contrast and focus rings, on every sidebar page at 1280px and 390px. Run it after a Nextra upgrade or any colour change. The first run on a new machine needs `pnpm exec playwright install chromium`.
 
 `pnpm wordcount <path>` counts the body prose of a content page, following the word-count rules in `CLAUDE.md`.
