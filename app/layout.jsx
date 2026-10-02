@@ -38,7 +38,7 @@ export default async function RootLayout({ children }) {
       />
       <body>
         <Layout
-          navbar={<Navbar logo={<b>Guide Template</b>} projectLink={REPO_URL} />}
+          navbar={<Navbar logo={<b>AlignFlow · Guide Template</b>} projectLink={REPO_URL} />}
           footer={<Footer>{new Date().getFullYear()} © Guide Template</Footer>}
           docsRepositoryBase={`${REPO_URL}/blob/main`}
           pageMap={pageMap}
