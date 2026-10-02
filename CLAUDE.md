@@ -14,7 +14,7 @@ Files to edit:
 - `CLAUDE.md` — the tokens above, the step and area names under Structure, the Go deeper sources, and the Glossary running list as pages are written.
 - `README.md` — the title, the opening description, and the repository URL.
 - `package.json` — `name`.
-- `app/layout.jsx` — the site title, description, and `REPO_URL`.
+- `app/layout.jsx` — the site title, description, and `REPO_URL`. Keep the `AlignFlow · ` prefix on the navbar logo.
 - `app/layout.jsx`, `app/globals.css` and `code-theme.mjs` — the accent (`<Head color>` in layout.jsx, plus the accent hex values in globals.css and the code theme), if a different one is wanted. Run `pnpm theme-audit` after any colour change.
 - `content/_meta.js`, `content/process/_meta.js`, `content/domains/_meta.js`, `content/tools/_meta.js` — sidebar labels and order.
 - `content/introduction/index.mdx`, `content/process/index.mdx`, `content/domains/index.mdx`, `content/tools/index.mdx` — the landing pages; list every step, area, and tool.
@@ -51,6 +51,8 @@ Top-level sections, in this sidebar order:
 4. tools — calculators, checklists, worksheets
 5. glossary
 6. about
+
+After about, `content/_meta.js` ends with one external link, Back to AlignFlow, to the AlignFlow hub at https://alignflow-hub.vercel.app. It is a link, not a section: keep it last, and keep its title and address as they are.
 
 Step and area names are provided by the owner in prompts; do not rename or reorder them. Slugs are lowercase-kebab-case and match the folder name.
 
